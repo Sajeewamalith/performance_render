@@ -24,6 +24,10 @@ public class MainActivity extends AppCompatActivity {
 
         addButton(ChatumLatinumActivity.class,
                 getString(R.string.title_activity_chatum_latinum), activityContainer);
+
+        addButton(CompareLayoutsActivity.class,
+                getString(R.string.title_activity_compare_layouts), activityContainer);
+
     }
 
     private void addButton(final Class destination, String description, ViewGroup parent) {
