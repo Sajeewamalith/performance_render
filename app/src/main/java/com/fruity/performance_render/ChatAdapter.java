@@ -1,6 +1,7 @@
 package com.fruity.performance_render;
 
 import android.content.Context;
+import android.graphics.Color;
 import android.graphics.Picture;
 import android.printservice.CustomPrinterIconCallback;
 import android.text.format.DateUtils;
@@ -67,14 +68,14 @@ public class ChatAdapter extends ArrayAdapter<Chat> {
 
         // Display the chat author's avatar (a droid image) and a background color associated with
         // the author.
-        if (chat.getAuthor().getAvatarId() != 0) {
-
-                Picasso.with(getContext()).load(chat.getAuthor().getAvatarId()).into(
-                        chat_author_avatar);
-                
-
+        if (chat.getAuthor().getAvatarId() == 0) {
+            Picasso.with(getContext()).load(android.R.color.transparent).into(chat_author_avatar);
+            chat_author_avatar.setBackgroundColor(chat.getAuthor().getColor());
+        } else {
+            Picasso.with(getContext()).load(chat.getAuthor().getAvatarId()).into(
+                    chat_author_avatar);
+            chat_author_avatar.setBackgroundColor(Color.TRANSPARENT);
         }
-        chat_author_avatar.setBackgroundColor(chat.getAuthor().getColor());
 
         return view;
     }
